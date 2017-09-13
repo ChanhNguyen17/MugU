@@ -13,8 +13,6 @@ db.once('open', function() {
 	console.log('we are connected!');
 });
 
-var User = require('./models/userModel');
-
 var app = express();
 
 // view engine setup
@@ -30,7 +28,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 var index = require('./routes/index');
-var users = require('./routes/users')(User);
+var users = require('./routes/users')();
 
 app.use('/', index);
 app.use('/users', users);
