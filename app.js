@@ -29,9 +29,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 var index = require('./routes/index');
 var users = require('./routes/users')();
+var meetups = require('./routes/meetups')();
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/meetups', meetups);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
