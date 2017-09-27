@@ -12,7 +12,7 @@ export class App extends Component {
             <BrowserRouter>
             <div>
                 <Switch>
-                    <Route exact path='/login' component={LoginWindow}/>
+                    <Route path='/login' component={LoginWindow}/>
                 </Switch>
                 </div>
             </BrowserRouter>

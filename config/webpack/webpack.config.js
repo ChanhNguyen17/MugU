@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const path = require('path');
+const webpack = require('webpack');
 
 console.log(path.resolve(__dirname))
 
@@ -38,10 +39,22 @@ module.exports = {
         path: __dirname + '/build'
     },
     plugins: [
-    new HtmlWebpackPlugin({
-      template: path.join(__dirname, '../../public/assets/index.html'),
-      filename: 'index.html',
-    }),
-    new ExtractTextPlugin('style.css'),
-  ],
+            new HtmlWebpackPlugin({
+                template: path.join(__dirname, '../../public/assets/index.html'),
+                filename: 'index.html',
+            }),
+            new ExtractTextPlugin('style.css'),
+            new webpack.HotModuleReplacementPlugin(),
+        ],
+        cache: true,
+        devtool: 'cheap-module-eval-source-map',
+        entry: path.join(__dirname, '../../public/index.js'),
+        devServer: {
+          contentBase: path.join(__dirname, '../../public/assets'),
+          historyApiFallback: true,
+          disableHostCheck: true,
+          host: process.env.HOST || '0.0.0.0',
+          port: process.env.PORT || 8080,
+        },
+
 };
