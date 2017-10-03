@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image, Segment } from 'semantic-ui-react';
+import { Container, Segment, Header, Label, Icon, Divider } from 'semantic-ui-react';
 
 class InviteItem extends Component {
   onClick = () => this.props.onClick();
@@ -7,17 +7,22 @@ class InviteItem extends Component {
     return (
       this.props.invite ? (
         <Segment onClick={this.onClick} >
-          <Image src={this.props.curObject.photo} fluid />
-          <h1>{this.props.curObject.name}</h1>
-          <span>{this.props.curObject.location}</span>
-          <p>{this.props.curObject.description}</p>
-          <div>{this.props.curObject.time}</div>
+          <Label color="teal" ribbon>{this.props.curObject.time}</Label>
+          <Container style={{ background: `transparent url( ${this.props.curObject.photo} ) 0 0/cover no-repeat`, width: '100%', height: '150px' }} />
+          <Header>{this.props.curObject.name}</Header>
+          <Label>
+            <Icon name="marker" />{this.props.curObject.location}
+          </Label>
+          <Divider />
+          <Container>{this.props.curObject.description}</Container>
+
         </Segment>
       ) : (
         <Segment onClick={this.onClick} >
-          <Image src={this.props.curObject.photo} fluid />
-          <h1>{this.props.curObject.name}</h1>
-          <p>{this.props.curObject.description}</p>
+          <Container style={{ background: `transparent url( ${this.props.curObject.photo} ) 0 0/cover no-repeat`, width: '100%', height: '150px' }} />
+          <Header>{this.props.curObject.name}</Header>
+          <Divider />
+          <Container>{this.props.curObject.description}</Container>
         </Segment>
       )
     );

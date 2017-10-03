@@ -19,19 +19,19 @@ class MenuBar extends Component {
       <Menu icon="labeled" size="huge" fixed="bottom" fluid widths={4}>
         <Menu.Item name="profile" active={activeItem === 'profile'} onClick={this.handleItemClick} >
           <Icon name="user" />
-          Profile
+          {(activeItem === 'profile') ? 'Profile' : ''}
         </Menu.Item>
         <Menu.Item name="invites" active={activeItem === 'invites'} onClick={this.handleItemClick} >
           <Icon name="coffee" />
-          Invites
+          {(activeItem === 'invites') ? 'Invites' : ''}
         </Menu.Item>
         <Menu.Item name="locations" active={activeItem === 'locations'} onClick={this.handleItemClick} >
           <Icon name="marker" />
-          Locations
+          {(activeItem === 'locations') ? 'Locations' : ''}
         </Menu.Item>
         <Menu.Item name="settings" active={activeItem === 'settings'} onClick={this.handleItemClick} >
           <Icon name="setting" />
-          Settings
+          {(activeItem === 'settings') ? 'Settings' : ''}
         </Menu.Item>
       </Menu>
     );

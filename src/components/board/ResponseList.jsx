@@ -5,14 +5,14 @@ import InviteItem from './InviteItem';
 const fakeInvites = [{
   name: 'Sansa Stark',
   location: 'Albertinkatu',
-  description: 'blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah',
+  description: 'Cat ipsum dolor sit amet, head nudges and sometimes switches in french and say "miaou" just because well why not. Immediately regret falling into bathtub dead stare with ears cocked.',
   time: '1 hour',
   photo: 'http://www.telegraph.co.uk/content/dam/women/2016/05/25/sansa_2_HBO_trans_NvBQzQNjv4Bq4POtkKlMnbnjmurEo3KPFHJRhioyr4bYEHUX_IAro80.jpg?imwidth=480'
 },
 {
   name: 'Arya Stark',
   location: 'Lapinlahdenkatu',
-  description: 'blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah',
+  description: 'Cat ipsum dolor sit amet, head nudges and sometimes switches in french and say "miaou" just because well why not. Immediately regret falling into bathtub dead stare with ears cocked.',
   time: '1 hour',
   photo: 'http://cdn.images.express.co.uk/img/dynamic/20/590x/secondary/Arya-Stark-appears-to-have-a-murderous-streak-1002871.jpg'
 }];
@@ -26,7 +26,7 @@ class ResponseList extends Component {
   closeModal = () => this.setState({ openModal: false })
   render() {
     return (
-      <Grid stackable container columns={3}>
+      <Grid stackable container columns={3} style={{ paddingBottom: '100px' }}>
         <Grid.Row>
           <h1>Your invite</h1>
         </Grid.Row>

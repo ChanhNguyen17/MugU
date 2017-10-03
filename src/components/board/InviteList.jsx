@@ -6,28 +6,28 @@ import InviteItem from './InviteItem';
 const fakeInvites = [{
   name: 'Jon Snow',
   location: 'Bulevardi',
-  description: 'blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah',
+  description: 'Cat ipsum dolor sit amet, head nudges and sometimes switches in french and say "miaou" just because well why not. Immediately regret falling into bathtub dead stare with ears cocked.',
   time: '1 hour',
   photo: 'http://www.telegraph.co.uk/content/dam/tv/2017/03/09/JS100865510_got_trans_NvBQzQNjv4Bqeo_i_u9APj8RuoebjoAHt0k9u7HhRJvuo-ZLenGRumA.jpg?imwidth=480'
 },
 {
   name: 'Sansa Stark',
   location: 'Albertinkatu',
-  description: 'blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah',
+  description: 'Cat ipsum dolor sit amet, head nudges and sometimes switches in french and say "miaou" just because well why not. Immediately regret falling into bathtub dead stare with ears cocked.',
   time: '1 hour',
   photo: 'http://www.telegraph.co.uk/content/dam/women/2016/05/25/sansa_2_HBO_trans_NvBQzQNjv4Bq4POtkKlMnbnjmurEo3KPFHJRhioyr4bYEHUX_IAro80.jpg?imwidth=480'
 },
 {
   name: 'Arya Stark',
   location: 'Lapinlahdenkatu',
-  description: 'blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah',
+  description: 'Cat ipsum dolor sit amet, head nudges and sometimes switches in french and say "miaou" just because well why not. Immediately regret falling into bathtub dead stare with ears cocked.',
   time: '1 hour',
   photo: 'http://cdn.images.express.co.uk/img/dynamic/20/590x/secondary/Arya-Stark-appears-to-have-a-murderous-streak-1002871.jpg'
 },
 {
   name: 'Sansa Stark',
   location: 'Albertinkatu',
-  description: 'blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah',
+  description: 'Cat ipsum dolor sit amet, head nudges and sometimes switches in french and say "miaou" just because well why not. Immediately regret falling into bathtub dead stare with ears cocked.',
   time: '1 hour',
   photo: 'http://www.telegraph.co.uk/content/dam/women/2016/05/25/sansa_2_HBO_trans_NvBQzQNjv4Bq4POtkKlMnbnjmurEo3KPFHJRhioyr4bYEHUX_IAro80.jpg?imwidth=480'
 }];
@@ -41,7 +41,7 @@ class InviteList extends Component {
   closeModal = modalIsOpen => this.setState({ modalIsOpen })
   render() {
     return (
-      <Grid stackable container columns={3}>
+      <Grid stackable container columns={3} style={{ paddingBottom: '100px' }}>
         <Grid.Row>
           <Button animated="fade" fluid >
             <Button.Content visible>
