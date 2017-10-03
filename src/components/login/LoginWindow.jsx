@@ -20,7 +20,7 @@ class LoginWindow extends Component {
   }
   render() {
     return (
-      <Grid centered>
+      <Grid centered stackable>
         <Grid.Row>
           <Grid.Column width={4}>
             <img src="" alt="logo" />
