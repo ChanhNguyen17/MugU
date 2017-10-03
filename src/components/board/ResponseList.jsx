@@ -32,7 +32,7 @@ class ResponseList extends Component {
         </Grid.Row>
         <Grid.Row>
           <Grid.Column>
-            <InviteItem invite onClick={this.showModal(fakeInvites[0])} curObject={fakeInvites[0]} />
+            <InviteItem invite curObject={fakeInvites[0]} />
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>

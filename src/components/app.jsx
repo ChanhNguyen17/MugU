@@ -5,6 +5,7 @@ import InviteWindow from './board/InviteWindow';
 
 class App extends Component {
   foo = 'bar';
+
   render() {
     return (
       <div>
@@ -16,6 +17,7 @@ class App extends Component {
             </Switch>
           </div>
         </BrowserRouter>
+
       </div>
     );
   }

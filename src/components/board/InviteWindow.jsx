@@ -3,6 +3,8 @@ import { Menu } from 'semantic-ui-react';
 import InviteList from './InviteList';
 import ResponseList from './ResponseList';
 
+import MenuBar from '../menu/MenuBar';
+
 class InviteWindow extends Component {
   constructor(props) {
     super(props);
@@ -21,6 +23,7 @@ class InviteWindow extends Component {
           <Menu.Item name="responses" active={activeItem === 'responses'} onClick={this.handleItemClick} />
         </Menu>
         { this.state.activeItem === 'invites' ? <InviteList /> : <ResponseList /> }
+        <MenuBar history={this.props.history} activeItem="invites" />
       </div>
     );
   }

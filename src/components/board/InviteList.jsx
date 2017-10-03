@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image, Segment, Grid, Button } from 'semantic-ui-react';
+import { Grid, Button } from 'semantic-ui-react';
 import InviteModal from './InviteModal';
 import InviteItem from './InviteItem';
 
