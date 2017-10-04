@@ -2,6 +2,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const GLOBALS = {
   'process.env.ENDPOINT': JSON.stringify(process.env.ENDPOINT || 'http://localhost:8090'),
@@ -27,6 +28,10 @@ module.exports = {
         test: /\.less$/,
         loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: ['css-loader', 'less-loader'] }),
       },
+      {
+        test: /\.(woff|woff2|ttf|eot|svg|png)(\?v=[a-z0-9]\.[a-z0-9]\.[a-z0-9])?$/,
+        loader: 'url-loader?limit=100000',
+      },
     ]
   },
   resolve: {
@@ -48,6 +53,12 @@ module.exports = {
     new ExtractTextPlugin('main.css'),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.DefinePlugin(GLOBALS),
+    new CopyWebpackPlugin([
+      {
+        from: path.join(__dirname, '../../src/assets/images'),
+        to: 'images',
+      },
+    ]),
   ],
   cache: true,
   devtool: 'cheap-module-eval-source-map',

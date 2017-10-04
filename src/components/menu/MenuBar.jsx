@@ -4,7 +4,7 @@ import { Menu, Icon } from 'semantic-ui-react';
 class MenuBar extends Component {
   constructor(props) {
     super(props);
-    this.state = { activeItem: this.props.activeItem }
+    this.state = { activeItem: this.props.activeItem };
   }
 
   handleItemClick = (e, { name }) => {
@@ -16,7 +16,7 @@ class MenuBar extends Component {
   render() {
     const { activeItem } = this.state;
     return (
-      <Menu icon="labeled" size="small" fixed="bottom" fluid widths={4}>
+      <Menu style={{ background: '#cec5bc' }} icon="labeled" size="tiny" fixed="bottom" fluid widths={4}>
         <Menu.Item name="profile" active={activeItem === 'profile'} onClick={this.handleItemClick} >
           <Icon name="user" />
           {(activeItem === 'profile') ? 'Profile' : ''}
