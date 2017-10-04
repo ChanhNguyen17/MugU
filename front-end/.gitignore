@@ -1,0 +1,20 @@
+# OSX
+.DS_Store
+
+# Build
+build
+
+# Node
+node_modules
+npm-debug.log
+yarn-error.log
+
+# Logs
+*.log
+
+# Environment
+.env
+
+# Keys
+keys
+*.pem
