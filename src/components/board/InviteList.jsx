@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Grid, Button } from 'semantic-ui-react';
 import InviteModal from './InviteModal';
+import NewModal from './NewModal';
 import InviteItem from './InviteItem';
 
 const fakeInvites = [{
@@ -35,15 +36,17 @@ const fakeInvites = [{
 class InviteList extends Component {
   constructor(props) {
     super(props);
-    this.state = { currentInvite: {}, modalIsOpen: false };
+    this.state = { currentInvite: {}, modalIsOpen: false, newModalIsOpen: false };
   }
   showModal = currentInvite => () => this.setState({ currentInvite, modalIsOpen: true })
+  showNewModal = () => this.setState({ newModalIsOpen: true })
   closeModal = modalIsOpen => this.setState({ modalIsOpen })
+  closeNewModal = newModalIsOpen => this.setState({ newModalIsOpen })
   render() {
     return (
       <Grid stackable container columns={3} style={{ paddingBottom: '100px' }}>
         <Grid.Row>
-          <Button animated="fade" fluid >
+          <Button animated="fade" fluid onClick={this.showNewModal}>
             <Button.Content visible>
               +
             </Button.Content>
@@ -71,6 +74,7 @@ class InviteList extends Component {
           ))
         }
         <InviteModal open={this.state.modalIsOpen} curObject={this.state.currentInvite} close={this.closeModal} />
+        <NewModal open={this.state.newModalIsOpen} close={this.closeNewModal} />
       </Grid>
     );
   }

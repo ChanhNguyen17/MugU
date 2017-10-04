@@ -16,7 +16,7 @@ class MenuBar extends Component {
   render() {
     const { activeItem } = this.state;
     return (
-      <Menu icon="labeled" size="huge" fixed="bottom" fluid widths={4}>
+      <Menu icon="labeled" size="small" fixed="bottom" fluid widths={4}>
         <Menu.Item name="profile" active={activeItem === 'profile'} onClick={this.handleItemClick} >
           <Icon name="user" />
           {(activeItem === 'profile') ? 'Profile' : ''}
