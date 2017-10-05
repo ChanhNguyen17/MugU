@@ -1,36 +1,64 @@
 import React, { Component } from 'react';
-import { Image, Segment, Button, Modal } from 'semantic-ui-react';
+import { Label, Icon, Container, Header, Divider, Button, Modal } from 'semantic-ui-react';
 
 class InviteModal extends Component {
   closeModal = () => this.props.close(false);
 
   render() {
     return (
-      <Modal size="mini" closeIcon open={this.props.open} onClose={this.closeModal}>
+      <Modal className="mugu-modal" size="mini" closeIcon open={this.props.open} onClose={this.closeModal}>
         <Modal.Header>
-          <Image centered fluid src={this.props.curObject.photo} />
-          {this.props.curObject.name}
+          <Container className="mugu-image" style={{ background: `transparent url( ${this.props.curObject.photo} ) 0 0/cover no-repeat`, width: '100%' }} />
+          <Container className="mugu-name"><Header>{this.props.curObject.name}</Header></Container>
         </Modal.Header>
         <Modal.Content>
-          <Modal.Description>
-            <Segment>
-              <h3>Description</h3>
+          {this.props.invite ? (<Modal.Description>
+            <Container>
               <p>{this.props.curObject.description}</p>
-            </Segment>
-            <Segment>
-              <h3>Place</h3>
-              <p>{this.props.curObject.location}</p>
-            </Segment>
-            <Segment>
-              <h3>{this.props.curObject.name} wants to meet in:</h3>
-              <p>{this.props.curObject.time}</p>
-            </Segment>
-          </Modal.Description>
+            </Container>
+            <Divider />
+            <Container>
+              <Label>
+                <Icon name="marker" />{this.props.curObject.location}
+              </Label>
+            </Container>
+            <Divider />
+            <Container className="time">
+              <p>{this.props.curObject.name} wants to meet in:</p>
+              <Header>{this.props.curObject.time}</Header>
+            </Container>
+          </Modal.Description>) : (
+              <Modal.Description>
+                <Container>
+                  <p>{this.props.curObject.description}</p>
+                </Container>
+                <Divider />
+                <Container>
+                  <h3>Reacted to your invite to</h3>
+                  <Label>
+                    <Icon name="marker" />{this.props.curObject.location}
+                  </Label>
+                </Container>
+                <Divider />
+                <Container>
+                  <h3>{this.props.curObject.name} added a comment:</h3>
+                  <p>{this.props.curObject.comment}</p>
+                </Container>
+              </Modal.Description>
+            )
+          }
+
         </Modal.Content>
         <Modal.Actions>
-          <Button positive>
-            Interested
-          </Button>
+          {this.props.invite ? (
+            <Button className="mugu-btn" circular content="Interested" />
+          ) : (
+              <div>
+                <Button className="mugu-btn" circular content="Accept" />
+                <Button className="mugu-btn negative" circular content="Decline" />
+              </div>
+            )
+          }
         </Modal.Actions>
       </Modal>
     );

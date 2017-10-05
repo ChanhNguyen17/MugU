@@ -20,7 +20,7 @@ class InviteWindow extends Component {
     return (
       <div style={{ background: '#f4f0e9' }}>
         <PageHeader />
-        <Menu size="massive" pointing secondary widths={2}>
+        <Menu className="mugu-tab-menu" size="massive" pointing secondary widths={2}>
           <Menu.Item name="invites" active={activeItem === 'invites'} onClick={this.handleItemClick} />
           <Menu.Item name="responses" active={activeItem === 'responses'} onClick={this.handleItemClick} />
         </Menu>

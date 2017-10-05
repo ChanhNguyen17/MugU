@@ -1,29 +1,32 @@
 import React, { Component } from 'react';
 import { Image, Segment, Grid, Button, Modal } from 'semantic-ui-react';
 import InviteItem from './InviteItem';
+import InviteModal from './InviteModal';
 
 const fakeInvites = [{
   name: 'Sansa Stark',
   location: 'Albertinkatu',
   description: 'Cat ipsum dolor sit amet, head nudges and sometimes switches in french and say "miaou" just because well why not. Immediately regret falling into bathtub dead stare with ears cocked.',
   time: '1 hour',
-  photo: 'http://www.telegraph.co.uk/content/dam/women/2016/05/25/sansa_2_HBO_trans_NvBQzQNjv4Bq4POtkKlMnbnjmurEo3KPFHJRhioyr4bYEHUX_IAro80.jpg?imwidth=480'
+  photo: 'http://www.telegraph.co.uk/content/dam/women/2016/05/25/sansa_2_HBO_trans_NvBQzQNjv4Bq4POtkKlMnbnjmurEo3KPFHJRhioyr4bYEHUX_IAro80.jpg?imwidth=480',
+  comment: 'Cat ipsum dolor sit amet',
 },
 {
   name: 'Arya Stark',
   location: 'Lapinlahdenkatu',
   description: 'Cat ipsum dolor sit amet, head nudges and sometimes switches in french and say "miaou" just because well why not. Immediately regret falling into bathtub dead stare with ears cocked.',
   time: '1 hour',
-  photo: 'http://cdn.images.express.co.uk/img/dynamic/20/590x/secondary/Arya-Stark-appears-to-have-a-murderous-streak-1002871.jpg'
+  photo: 'http://cdn.images.express.co.uk/img/dynamic/20/590x/secondary/Arya-Stark-appears-to-have-a-murderous-streak-1002871.jpg',
+  comment: 'Cat ipsum dolor sit amet',
 }];
 
 class ResponseList extends Component {
   constructor(props) {
     super(props);
-    this.state = { currentInvite: {}, openModal: false };
+    this.state = { currentInvite: {}, modalIsOpen: false };
   }
-  showModal = currentInvite => () => this.setState({ currentInvite, openModal: true })
-  closeModal = () => this.setState({ openModal: false })
+  closeModal = modalIsOpen => this.setState({ modalIsOpen })
+  showModal = currentInvite => () => this.setState({ currentInvite, modalIsOpen: true })
   render() {
     return (
       <Grid stackable container columns={3} style={{ paddingBottom: '100px' }}>
@@ -45,37 +48,7 @@ class ResponseList extends Component {
             </Grid.Column>
           ))
         }
-
-        <Modal size="mini" closeIcon open={this.state.openModal} onClose={this.closeModal}>
-          <Modal.Header>
-            <Image centered fluid src={this.state.currentInvite.photo} />
-            {this.state.currentInvite.name}
-          </Modal.Header>
-          <Modal.Content>
-            <Modal.Description>
-              <Segment>
-                <h3>Description</h3>
-                <p>{this.state.currentInvite.description}</p>
-              </Segment>
-              <Segment>
-                <h3>Reacted to your invite to:</h3>
-                <p>Albertinkatu</p>
-              </Segment>
-              <Segment>
-                <h3>{this.state.currentInvite.name} added a comment:</h3>
-                <p>blah blah blah</p>
-              </Segment>
-            </Modal.Description>
-          </Modal.Content>
-          <Modal.Actions>
-            <Button positive>
-              Accept
-            </Button>
-            <Button negative>
-              Decline
-            </Button>
-          </Modal.Actions>
-        </Modal>
+        <InviteModal open={this.state.modalIsOpen} curObject={this.state.currentInvite} close={this.closeModal} />
       </Grid>
     );
   }
