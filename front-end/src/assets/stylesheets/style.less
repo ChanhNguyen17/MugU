@@ -1,8 +1,86 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700');
+
+@darkColor: #5b554d;
+@menuColor: #cec5bc;
+@lightColor: #f4f0e9;
+
+.gradient (@start, @end) {
+  background-color: @start;
+  background-image:      -o-linear-gradient(top, @start, @end);
+  background-image:     -ms-linear-gradient(top, @start, @end);
+  background-image:    -moz-linear-gradient(top, @start, @end);
+  background-image: -webkit-linear-gradient(top, @start, @end);
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(@start), to(@end));
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='@start', endColorstr='@end');
 }
 
-a {
-  color: #00B7FF;
+.openSansFont {
+  font-family: 'Open Sans', sans-serif !important;
+}
+
+.noPadding {
+  padding: 0 !important;
+}
+
+.bigText {
+  font-size: 25px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+body {
+  .openSansFont;
+}
+
+.spacedText {
+  text-transform: uppercase !important;
+  font-weight: 300 !important;
+  letter-spacing: 3px !important;
+}
+
+.mugu-btn {
+  background-color: @darkColor !important;
+  color: @lightColor !important;
+  margin:  10px auto !important;
+  display: block !important;
+  .spacedText;
+  .openSansFont;
+}
+
+.mugu-btn.negative {
+  background-color: @menuColor !important;
+}
+
+.mugu-tab-menu .item {
+  .spacedText;
+}
+
+.mugu-modal {
+  .header {
+    position: relative;
+    .noPadding;
+    .mugu-image {
+      height: 300px;
+    }
+    .mugu-name {
+      position: absolute;
+      bottom: 0;
+      .gradient(transparent, #000);
+      height: 50px;
+      .header {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        color: #fff;
+      }
+    }
+  }
+  .time {
+    text-align: center;
+    .header {
+      .bigText;
+      margin-top: 5px;
+      color: @darkColor;
+    }
+  }
 }

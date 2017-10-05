@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Button } from 'semantic-ui-react';
+import { Grid, Button, Icon } from 'semantic-ui-react';
 import InviteModal from './InviteModal';
 import NewModal from './NewModal';
 import InviteItem from './InviteItem';
@@ -50,9 +50,9 @@ class InviteList extends Component {
     return (
       <Grid stackable container columns={3} style={{ paddingBottom: '100px' }}>
         <Grid.Row>
-          <Button animated="fade" fluid onClick={this.showNewModal}>
+          <Button style={{ background: '#cec5bc' }} size="large" animated="fade" fluid onClick={this.showNewModal}>
             <Button.Content visible>
-              +
+              <Icon name="plus" />
             </Button.Content>
             <Button.Content hidden>
               Create a new invite
@@ -64,7 +64,7 @@ class InviteList extends Component {
         </Grid.Row>
         <Grid.Row>
           <Grid.Column>
-            <InviteItem onClick={this.showModal(fakeInvites[0])} curObject={fakeInvites[0]} />
+            <InviteItem invite onClick={this.showModal(fakeInvites[0])} curObject={fakeInvites[0]} />
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
@@ -77,7 +77,7 @@ class InviteList extends Component {
             </Grid.Column>
           ))
         }
-        <InviteModal open={this.state.modalIsOpen} curObject={this.state.currentInvite} close={this.closeModal} />
+        <InviteModal invite open={this.state.modalIsOpen} curObject={this.state.currentInvite} close={this.closeModal} />
         <NewModal open={this.state.newModalIsOpen} close={this.closeNewModal} />
       </Grid>
     );

@@ -7,6 +7,7 @@ import InviteWindow from './board/InviteWindow';
 import LocationWindow from './locations/LocationWindow';
 import ProfileWindow from './profile/ProfileWindow';
 import SettingsWindow from './settings/SettingsWindow';
+import '../assets/stylesheets/style.less';
 
 class App extends Component {
 

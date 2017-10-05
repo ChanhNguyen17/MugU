@@ -7,7 +7,7 @@ class InviteItem extends Component {
     return (
       this.props.invite ? (
         <Segment onClick={this.onClick} >
-          <Label color="teal" ribbon>{this.props.curObject.time}</Label>
+          <Label color="olive" ribbon>{this.props.curObject.time}</Label>
           <Container style={{ background: `transparent url( ${this.props.curObject.photo} ) 0 0/cover no-repeat`, width: '100%', height: '150px' }} />
           <Header>{this.props.curObject.name}</Header>
           <Label>

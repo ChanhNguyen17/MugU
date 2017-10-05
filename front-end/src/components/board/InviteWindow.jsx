@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Menu } from 'semantic-ui-react';
 import InviteList from './InviteList';
 import ResponseList from './ResponseList';
+import PageHeader from '../menu/PageHeader';
 
 import MenuBar from '../menu/MenuBar';
 
@@ -17,8 +18,9 @@ class InviteWindow extends Component {
   render() {
     const { activeItem } = this.state;
     return (
-      <div>
-        <Menu pointing secondary widths={2}>
+      <div style={{ background: '#f4f0e9' }}>
+        <PageHeader />
+        <Menu className="mugu-tab-menu" size="massive" pointing secondary widths={2}>
           <Menu.Item name="invites" active={activeItem === 'invites'} onClick={this.handleItemClick} />
           <Menu.Item name="responses" active={activeItem === 'responses'} onClick={this.handleItemClick} />
         </Menu>
