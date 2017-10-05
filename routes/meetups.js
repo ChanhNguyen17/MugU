@@ -31,6 +31,34 @@ var router = function(){
 			}
 		});
 	});
+	meetupRouter.put('/:meetupId', function(req, res, next){
+		meetupCollection.findById(req.params.meetupId, function(err, meetup){
+			if(err){
+				res.status(500).send(err);
+			}else{
+				meetup.time = req.body.time;
+				meetup.location = req.body.location;
+				meetup.description = req.body.description;
+				meetup.photo = req.body.photo;
+				user.save(function(err, user){
+					if(err){
+						res.status(500).send(err);
+					}else{
+						res.json(user);
+					}
+				});
+			}
+		});
+	});
+	meetupRouter.delete('/:meetupId', function(req, res, next){
+		meetupCollection.findByIdAndRemove(req.params.meetupId, function(err){
+			if(err){
+				res.status(500).send(err);
+			}else{
+				res.status(204);
+			}
+		});
+	});
 	return meetupRouter;
 };
 

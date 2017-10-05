@@ -65,6 +65,7 @@ var router = function(){
 			if(err){
 				res.status(500).send(err);
 			}else{
+				console.log('deleted user');
 				res.status(204);
 			}
 		});

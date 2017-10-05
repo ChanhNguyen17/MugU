@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { browserHistory } from 'react-router';
+
 import LoginWindow from './login/LoginWindow';
 import InviteWindow from './board/InviteWindow';
 import LocationWindow from './locations/LocationWindow';
@@ -7,11 +9,9 @@ import ProfileWindow from './profile/ProfileWindow';
 import SettingsWindow from './settings/SettingsWindow';
 
 class App extends Component {
-  foo = 'bar';
 
   render() {
     return (
-      <div>
         <BrowserRouter>
           <div>
             <Switch>
@@ -23,8 +23,6 @@ class App extends Component {
             </Switch>
           </div>
         </BrowserRouter>
-
-      </div>
     );
   }
 }

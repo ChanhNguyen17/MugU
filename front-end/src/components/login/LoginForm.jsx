@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { Form, Button } from 'semantic-ui-react';
+import { browserHistory } from 'react-router';
 
 class LoginForm extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { username: '', password: '', isAuthenticate: false };
+    this.state = { username: '', password: '' };
     this.handleChangeUsername = this.handleChangeUsername.bind(this);
     this.handleChangePassword = this.handleChangePassword.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -33,8 +34,8 @@ class LoginForm extends Component {
     }).then((response) => response.json())
       .then((responseJson) => {
         console.log(responseJson);
-        if(responseJson){
-          this.setState({isAuthenticate: true})
+        if(responseJson === true){
+          this.props.history.push("/invites");
         }
       })
       .catch((error) => {
