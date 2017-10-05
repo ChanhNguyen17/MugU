@@ -55,7 +55,7 @@ var router = function(){
 			if(err){
 				res.status(500).send(err);
 			}else{
-				res.status(204);
+				res.status(202).send('Meet up ' + req.params.meetupId + ' is deleted');
 			}
 		});
 	});

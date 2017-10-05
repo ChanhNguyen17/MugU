@@ -10,6 +10,18 @@ var userModel = new Schema({
 	password: {
 		type: String,
 		require: true
+	},
+	name: {
+		type: String
+	},
+	age: {
+		type: String
+	},
+	description: {
+		type: String
+	},
+	photo: {
+		type: String
 	}
 });
 

@@ -49,7 +49,11 @@ var router = function(){
 			if(err){
 				res.status(500).send(err);
 			}else{
+				user.name = req.body.name;
 				user.password = req.body.password;
+				user.age = req.body.age;
+				user.description = req.body.description;
+				user.photo = req.body.photo;
 				user.save(function(err, user){
 					if(err){
 						res.status(500).send(err);
@@ -65,8 +69,7 @@ var router = function(){
 			if(err){
 				res.status(500).send(err);
 			}else{
-				console.log('deleted user');
-				res.status(204);
+				res.status(202).send('User ' + req.params.userId + ' is deleted');
 			}
 		});
 	});
