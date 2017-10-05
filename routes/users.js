@@ -12,6 +12,19 @@ var router = function(){
 			}
 		});
 	});
+	userRouter.post('/authenticate', function(req, res, next){
+		userCollection.findOne({username: req.body.username}, function(err, user){
+			if(err){
+				res.status(500).send(err);
+			}else{
+				if(user && req.body.password === user.password){
+					res.json(true);
+				}else{
+					res.json(false);
+				}
+			}
+		});
+	});
 	userRouter.get('/:userId', function(req, res, next){
 		userCollection.findById(req.params.userId, function(err, user){
 			if(err){
