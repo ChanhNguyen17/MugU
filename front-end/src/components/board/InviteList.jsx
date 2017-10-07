@@ -5,6 +5,7 @@ import NewModal from './NewModal';
 import InviteItem from './InviteItem';
 
 const fakeInvites = [{
+  id: 0,
   name: 'Jon Snow',
   location: 'Bulevardi',
   description: 'Cat ipsum dolor sit amet, head nudges and sometimes switches in french and say "miaou" just because well why not. Immediately regret falling into bathtub dead stare with ears cocked.',
@@ -12,6 +13,7 @@ const fakeInvites = [{
   photo: 'http://www.telegraph.co.uk/content/dam/tv/2017/03/09/JS100865510_got_trans_NvBQzQNjv4Bqeo_i_u9APj8RuoebjoAHt0k9u7HhRJvuo-ZLenGRumA.jpg?imwidth=480'
 },
 {
+  id: 1,
   name: 'Sansa Stark',
   location: 'Albertinkatu',
   description: 'Cat ipsum dolor sit amet, head nudges and sometimes switches in french and say "miaou" just because well why not. Immediately regret falling into bathtub dead stare with ears cocked.',
@@ -19,6 +21,7 @@ const fakeInvites = [{
   photo: 'http://www.telegraph.co.uk/content/dam/women/2016/05/25/sansa_2_HBO_trans_NvBQzQNjv4Bq4POtkKlMnbnjmurEo3KPFHJRhioyr4bYEHUX_IAro80.jpg?imwidth=480'
 },
 {
+  id: 2,
   name: 'Arya Stark',
   location: 'Lapinlahdenkatu',
   description: 'Cat ipsum dolor sit amet, head nudges and sometimes switches in french and say "miaou" just because well why not. Immediately regret falling into bathtub dead stare with ears cocked.',
@@ -26,6 +29,7 @@ const fakeInvites = [{
   photo: 'http://cdn.images.express.co.uk/img/dynamic/20/590x/secondary/Arya-Stark-appears-to-have-a-murderous-streak-1002871.jpg'
 },
 {
+  id: 3,
   name: 'Sansa Stark',
   location: 'Albertinkatu',
   description: 'Cat ipsum dolor sit amet, head nudges and sometimes switches in french and say "miaou" just because well why not. Immediately regret falling into bathtub dead stare with ears cocked.',
@@ -68,7 +72,7 @@ class InviteList extends Component {
         </Grid.Row>
         {
           fakeInvites.map(i => (
-            <Grid.Column>
+            <Grid.Column key={i.id}>
               <InviteItem invite onClick={this.showModal(i)} curObject={i} />
             </Grid.Column>
           ))

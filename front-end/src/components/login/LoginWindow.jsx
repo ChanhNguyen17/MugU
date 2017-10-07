@@ -28,7 +28,7 @@ class LoginWindow extends Component {
         </Grid.Row>
         <Grid.Row>
           <Grid.Column width={4}>
-            {this.state.hasAccount ? <LoginForm /> : <SignupForm />}
+            {this.state.hasAccount ? <LoginForm history={this.props.history} /> : <SignupForm />}
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>

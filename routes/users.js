@@ -12,6 +12,19 @@ var router = function(){
 			}
 		});
 	});
+	userRouter.post('/authenticate', function(req, res, next){
+		userCollection.findOne({username: req.body.username}, function(err, user){
+			if(err){
+				res.status(500).send(err);
+			}else{
+				if(user && req.body.password === user.password){
+					res.json(true);
+				}else{
+					res.json(false);
+				}
+			}
+		});
+	});
 	userRouter.get('/:userId', function(req, res, next){
 		userCollection.findById(req.params.userId, function(err, user){
 			if(err){
@@ -36,7 +49,11 @@ var router = function(){
 			if(err){
 				res.status(500).send(err);
 			}else{
+				user.name = req.body.name;
 				user.password = req.body.password;
+				user.age = req.body.age;
+				user.description = req.body.description;
+				user.photo = req.body.photo;
 				user.save(function(err, user){
 					if(err){
 						res.status(500).send(err);
@@ -52,7 +69,7 @@ var router = function(){
 			if(err){
 				res.status(500).send(err);
 			}else{
-				res.status(204);
+				res.status(202).send('User ' + req.params.userId + ' is deleted');
 			}
 		});
 	});
