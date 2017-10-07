@@ -43,12 +43,13 @@ module.exports = {
   },
   output: {
     filename: 'main.js',
-    path: __dirname + '/build'
+    path: __dirname + '/build',
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, '../../src/public/index.html'),
       filename: 'index.html',
+      enviornment: process.env.GOOGLE_MAPS_API_KEY || '',
     }),
     new ExtractTextPlugin('main.css'),
     new webpack.HotModuleReplacementPlugin(),
@@ -62,7 +63,6 @@ module.exports = {
   ],
   cache: true,
   devtool: 'cheap-module-eval-source-map',
-  entry: path.join(__dirname, '../../src/index.jsx'),
   devServer: {
     contentBase: path.join(__dirname, '../../src/public'),
     historyApiFallback: true,
@@ -70,8 +70,8 @@ module.exports = {
     host: process.env.HOST || '0.0.0.0',
     port: process.env.PORT || 8080,
     proxy: {
-      '/api': 'http://localhost:3000'
-    }
+      '/api': 'http://localhost:3000',
+    },
   },
 
 };
