@@ -18,7 +18,7 @@ var router = function(){
 				res.status(500).send(err);
 			}else{
 				if(user && req.body.password === user.password){
-					res.json(true);
+					res.json(user);
 				}else{
 					res.json(false);
 				}

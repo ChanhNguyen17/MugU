@@ -78,7 +78,7 @@ class InviteList extends Component {
           ))
         }
         <InviteModal invite open={this.state.modalIsOpen} curObject={this.state.currentInvite} close={this.closeModal} />
-        <NewModal open={this.state.newModalIsOpen} close={this.closeNewModal} />
+        <NewModal history={this.props.history} open={this.state.newModalIsOpen} close={this.closeNewModal} />
       </Grid>
     );
   }

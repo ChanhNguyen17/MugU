@@ -13,11 +13,11 @@ class LoginForm extends Component {
   }
 
   handleChangeUsername(event) {
-    this.setState({username: event.target.value});
+    this.setState({ username: event.target.value });
   }
 
   handleChangePassword(event) {
-    this.setState({password: event.target.value});
+    this.setState({ password: event.target.value });
   }
 
   handleSubmit(event) {
@@ -31,11 +31,12 @@ class LoginForm extends Component {
         username: this.state.username,
         password: this.state.password,
       })
-    }).then((response) => response.json())
+    }).then(response => response.json())
       .then((responseJson) => {
         console.log(responseJson);
-        if(responseJson === true){
-          this.props.history.push("/invites");
+        if (responseJson) {
+          this.props.history.push('/invites');
+          localStorage.setItem('user', JSON.stringify(responseJson));
         }
       })
       .catch((error) => {

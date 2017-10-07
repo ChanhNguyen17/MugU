@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Grid } from 'semantic-ui-react';
+import { Grid, Image } from 'semantic-ui-react';
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
+import logo from '../../assets/images/full-logo.png';
 
 class LoginWindow extends Component {
   constructor(props) {
@@ -21,14 +22,14 @@ class LoginWindow extends Component {
   render() {
     return (
       <Grid centered stackable>
-        <Grid.Row>
+        <Grid.Row className="mugu-login-header">
           <Grid.Column width={4}>
-            <img src="" alt="logo" />
+            <Image centered src={logo} size="tiny" />
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
           <Grid.Column width={4}>
-            {this.state.hasAccount ? <LoginForm history={this.props.history} /> : <SignupForm />}
+            {this.state.hasAccount ? <LoginForm history={this.props.history} /> : <SignupForm history={this.props.history} />}
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
