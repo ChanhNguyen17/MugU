@@ -33,7 +33,7 @@ class NewModal extends Component {
               <label>Set time</label>
               <input type="time" />
             </Form.Field>
-            <Button onClick={this.closeModal} type="submit">Submit</Button>
+            <Button className="mugu-btn" circular onClick={this.closeModal} type="submit">Submit</Button>
           </Form>
         </Modal.Content>
       </Modal>

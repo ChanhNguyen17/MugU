@@ -3,6 +3,7 @@ import { Menu } from 'semantic-ui-react';
 import LocationList from './LocationList';
 import PageHeader from '../menu/PageHeader';
 import MenuBar from '../menu/MenuBar';
+import LocationMap from './LocationMap';
 
 class InviteWindow extends Component {
   constructor(props) {
@@ -21,7 +22,7 @@ class InviteWindow extends Component {
           <Menu.Item name="list" active={activeItem === 'list'} onClick={this.handleItemClick} />
           <Menu.Item name="onMap" active={activeItem === 'onMap'} onClick={this.handleItemClick} />
         </Menu>
-        { this.state.activeItem === 'list' ? <LocationList /> : null }
+        { this.state.activeItem === 'list' ? <LocationList /> : <LocationMap /> }
         <MenuBar history={this.props.history} activeItem="locations" />
       </div>
     );
