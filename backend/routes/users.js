@@ -1,10 +1,10 @@
 var express = require('express');
 var userCollection = require('../models/userModel');
 
-var router = function(){
+var router = ()=>{
 	var userRouter = express.Router();
-	userRouter.get('/', function(req, res, next) {
-		userCollection.find(function(err, users){
+	userRouter.get('/', (req, res, next) => {
+		userCollection.find((err, users)=>{
 			if(err){
 				res.status(500).send(err);
 			}else{
@@ -12,8 +12,8 @@ var router = function(){
 			}
 		});
 	});
-	userRouter.post('/authenticate', function(req, res, next){
-		userCollection.findOne({username: req.body.username}, function(err, user){
+	userRouter.post('/authenticate', (req, res, next)=>{
+		userCollection.findOne({username: req.body.username}, (err, user)=>{
 			if(err){
 				res.status(500).send(err);
 			}else{
@@ -25,8 +25,8 @@ var router = function(){
 			}
 		});
 	});
-	userRouter.get('/:userId', function(req, res, next){
-		userCollection.findById(req.params.userId, function(err, user){
+	userRouter.get('/:userId', (req, res, next)=>{
+		userCollection.findById(req.params.userId, (err, user)=>{
 			if(err){
 				res.status(500).send(err);
 			}else{
@@ -34,9 +34,9 @@ var router = function(){
 			}
 		});
 	});
-	userRouter.post('/', function(req, res, next){
+	userRouter.post('/', (req, res, next)=>{
 		var newUser = userCollection(req.body);
-		newUser.save(function(err, user){
+		newUser.save((err, user)=>{
 			if(err){
 				res.status(500).send(err);
 			}else{
@@ -44,8 +44,8 @@ var router = function(){
 			}
 		});
 	});
-	userRouter.put('/:userId', function(req, res, next){
-		userCollection.findById(req.params.userId, function(err, user){
+	userRouter.put('/:userId', (req, res, next)=>{
+		userCollection.findById(req.params.userId, (err, user)=>{
 			if(err){
 				res.status(500).send(err);
 			}else{
@@ -54,7 +54,7 @@ var router = function(){
 				user.age = req.body.age;
 				user.description = req.body.description;
 				user.photo = req.body.photo;
-				user.save(function(err, user){
+				user.save((err, user)=>{
 					if(err){
 						res.status(500).send(err);
 					}else{
@@ -64,8 +64,8 @@ var router = function(){
 			}
 		});
 	});
-	userRouter.delete('/:userId', function(req, res, next){
-		userCollection.findByIdAndRemove(req.params.userId, function(err){
+	userRouter.delete('/:userId', (req, res, next)=>{
+		userCollection.findByIdAndRemove(req.params.userId, (err)=>{
 			if(err){
 				res.status(500).send(err);
 			}else{

@@ -13,8 +13,8 @@ mongoose.connect(dbURL);
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
-	console.log('we are connected!');
+db.once('open', ()=>{
+  console.log('we are connected!');
 });
 
 var app = express();
@@ -42,14 +42,14 @@ app.use('/api/users', users);
 app.use('/api/meetups', meetups);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use((req, res, next)=>{
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use((err, req, res, next)=>{
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
