@@ -8,7 +8,7 @@ services:
 
   backend:
     build: backend
-    command: sh -c './wait-for db:27017 -- npm start'
+    command: sh -c './wait-for db:27017 -- npm run dev'
     environment:
       DATABASE_URL: mongodb://db:27017/mugu
     volumes:
