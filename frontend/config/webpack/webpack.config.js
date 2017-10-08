@@ -5,7 +5,7 @@ const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const GLOBALS = {
-  'process.env.ENDPOINT': JSON.stringify(process.env.ENDPOINT || 'http://localhost:8080/api/'),
+  'process.env.ENDPOINT': JSON.stringify(process.env.ENDPOINT || 'http://localhost:8090/api/'),
 };
 
 module.exports = {
@@ -69,9 +69,6 @@ module.exports = {
     disableHostCheck: true,
     host: process.env.HOST || '0.0.0.0',
     port: process.env.PORT || 8080,
-    proxy: {
-      '/api': 'http://localhost:3000',
-    },
   },
 
 };
