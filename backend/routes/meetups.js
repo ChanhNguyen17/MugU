@@ -1,9 +1,9 @@
 var express = require('express');
 var meetupCollection = require('../models/meetupModel');
 
-var router = function(){
+var router = () => {
 	var meetupRouter = express.Router();
-	meetupRouter.get('/', function(req, res, next){
+	meetupRouter.get('/', (req, res, next) => {
 		meetupCollection.find(function(err, meetups){
 			if(err){
 				res.status(500).send(err);
@@ -12,8 +12,8 @@ var router = function(){
 			}
 		});
 	});
-	meetupRouter.get('/:meetupId', function(req, res, next){
-		meetupCollection.findById(req.params.meetupId, function(err, meetup){
+	meetupRouter.get('/:meetupId', (req, res, next) => {
+		meetupCollection.findById(req.params.meetupId, (err, meetup)=>{
 			if(err){
 				res.status(500).send(err);
 			}else{
@@ -21,9 +21,9 @@ var router = function(){
 			}
 		});
 	});
-	meetupRouter.post('/', function(req, res, next){
+	meetupRouter.post('/', (req, res, next)=>{
 		var newMeetup = meetupCollection(req.body);
-		newMeetup.save(function(err, meetup){
+		newMeetup.save((err, meetup)=>{
 			if(err){
 				res.status(500).send(err);
 			}else{
@@ -31,8 +31,8 @@ var router = function(){
 			}
 		});
 	});
-	meetupRouter.put('/:meetupId', function(req, res, next){
-		meetupCollection.findById(req.params.meetupId, function(err, meetup){
+	meetupRouter.put('/:meetupId', (req, res, next)=>{
+		meetupCollection.findById(req.params.meetupId, (err, meetup)=>{
 			if(err){
 				res.status(500).send(err);
 			}else{
@@ -40,7 +40,7 @@ var router = function(){
 				meetup.location = req.body.location;
 				meetup.description = req.body.description;
 				meetup.photo = req.body.photo;
-				user.save(function(err, user){
+				user.save((err, user)=>{
 					if(err){
 						res.status(500).send(err);
 					}else{
@@ -50,8 +50,8 @@ var router = function(){
 			}
 		});
 	});
-	meetupRouter.delete('/:meetupId', function(req, res, next){
-		meetupCollection.findByIdAndRemove(req.params.meetupId, function(err){
+	meetupRouter.delete('/:meetupId', (req, res, next)=>{
+		meetupCollection.findByIdAndRemove(req.params.meetupId, (err)=>{
 			if(err){
 				res.status(500).send(err);
 			}else{
