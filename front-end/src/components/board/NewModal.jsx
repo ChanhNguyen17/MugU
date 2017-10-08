@@ -1,51 +1,48 @@
 import React, { Component } from 'react';
 import { Form, Button, Modal } from 'semantic-ui-react';
+import { connect } from 'react-redux';
 import moment from 'moment';
 
+import { createNewInvite } from '../../actions/meetups';
 
 const options = [
   { text: 'Espresso House', value: 'espresso' },
   { text: 'Kahvi Charlotta', value: 'charlotta' },
-  { text: 'Robert\'s coffee', value: 'roberts' }
+  { text: 'Robert\'s coffee', value: 'roberts' },
 ];
 
 class NewModal extends Component {
   constructor(props) {
     super(props);
-    this.state = { description: '', place: '', time: null };
+
+    this.state = {
+      description: '',
+      place: '',
+      time: null,
+    };
+
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value });
   closeModal = () => this.props.close(false);
 
-
   handleSubmit(e) {
-    fetch('/api/meetups', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        description: this.state.description,
-        place: this.state.place,
-        time: this.state.time
-      })
-    }).then(response => response.json())
-      .then((responseJson) => {
-        console.log(responseJson);
-        this.props.history.push('/invites');
-      })
-      .catch((error) => {
-        console.error(error);
-      });
     e.preventDefault();
+
+    this.props.createNewInvite(
+      this.state.description,
+      this.state.place,
+      moment(this.state.time, 'HH:mm').toDate()
+    ).then((responseJson) => {
+      console.log(responseJson);
+      this.closeModal();
+    }).catch((error) => {
+      console.error(error);
+    });
   }
 
   render() {
-    console.log(this.state.time);
     return (
       <Modal size="mini" closeIcon open={this.props.open} onClose={this.closeModal}>
         <Modal.Header>
@@ -64,4 +61,9 @@ class NewModal extends Component {
   }
 }
 
-export default NewModal;
+const mapDispatchToProps = {
+  createNewInvite,
+};
+
+
+export default connect(null, mapDispatchToProps)(NewModal);
