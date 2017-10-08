@@ -1,74 +1,73 @@
 var express = require('express');
 var userCollection = require('../models/userModel');
 
-var router = ()=>{
+var router = () => {
 	var userRouter = express.Router();
 	userRouter.get('/', (req, res, next) => {
-		userCollection.find((err, users)=>{
-			if(err){
+		userCollection.find((err, users) => {
+			if (err) {
 				res.status(500).send(err);
-			}else{
+			} else {
 				res.json(users);
 			}
 		});
 	});
-	userRouter.post('/authenticate', (req, res, next)=>{
-		userCollection.findOne({username: req.body.username}, (err, user)=>{
-			if(err){
+	userRouter.post('/authenticate', (req, res, next) => {
+		userCollection.findOne({email: req.body.email}, (err, user) => {
+			if (err) {
 				res.status(500).send(err);
-			}else{
-				if(user && req.body.password === user.password){
+			} else {
+				if (user && req.body.password === user.password) {
 					res.json(user);
-				}else{
+				} else {
 					res.json(false);
 				}
 			}
 		});
 	});
-	userRouter.get('/:userId', (req, res, next)=>{
-		userCollection.findById(req.params.userId, (err, user)=>{
-			if(err){
+	userRouter.get('/:userId', (req, res, next) => {
+		userCollection.findById(req.params.userId, (err, user) => {
+			if (err) {
 				res.status(500).send(err);
-			}else{
+			} else {
 				res.json(user);
 			}
 		});
 	});
-	userRouter.post('/', (req, res, next)=>{
+	userRouter.post('/', (req, res, next) => {
+		console.log(req.body)
 		var newUser = userCollection(req.body);
-		newUser.save((err, user)=>{
-			if(err){
+		newUser.save((err, user) => {
+			if (err) {
 				res.status(500).send(err);
-			}else{
+			} else {
 				res.json(user);
 			}
 		});
 	});
-	userRouter.put('/:userId', (req, res, next)=>{
-		userCollection.findById(req.params.userId, (err, user)=>{
-			if(err){
+	userRouter.put('/:userId', (req, res, next) => {
+		userCollection.findById(req.params.userId, (err, user) => {
+			if (err) {
 				res.status(500).send(err);
-			}else{
+			} else {
 				user.name = req.body.name;
-				user.password = req.body.password;
 				user.age = req.body.age;
 				user.description = req.body.description;
-				user.photo = req.body.photo;
-				user.save((err, user)=>{
-					if(err){
+				user.save((err, user) => {
+					if (err){
 						res.status(500).send(err);
-					}else{
+					} else {
 						res.json(user);
 					}
 				});
 			}
 		});
 	});
-	userRouter.delete('/:userId', (req, res, next)=>{
-		userCollection.findByIdAndRemove(req.params.userId, (err)=>{
-			if(err){
+	userRouter.delete('/:userId', (req, res, next) => {
+		userCollection.findByIdAndRemove(req.params.userId, (err) => {
+			if (err) {
 				res.status(500).send(err);
-			}else{
+			} else {
 				res.status(202).send('User ' + req.params.userId + ' is deleted');
 			}
 		});

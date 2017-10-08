@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Menu } from 'semantic-ui-react';
+
 import InviteList from './InviteList';
 import ResponseList from './ResponseList';
 import PageHeader from '../menu/PageHeader';
@@ -10,7 +11,6 @@ class InviteWindow extends Component {
   constructor(props) {
     super(props);
     this.state = { activeItem: 'invites' };
-    //  this.handleItecmClick = this.handleItemClick.bind(this);
   }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })

@@ -1,12 +1,13 @@
 import { applyMiddleware, createStore, compose } from 'redux';
 import thunk from 'redux-thunk';
+import { routerMiddleware } from 'react-router-redux';
 
 import reducer from '../reducers';
 import Api from '../api/Api';
 
 const api = new Api();
 
-const getStore = () => {
+const getStore = (history) => {
   const composeEnhancers =
     typeof window === 'object' &&
       window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
@@ -15,6 +16,7 @@ const getStore = () => {
 
   const enhancer = composeEnhancers(
     applyMiddleware(thunk.withExtraArgument(api)),
+    applyMiddleware(routerMiddleware(history)),
   );
 
   let store;

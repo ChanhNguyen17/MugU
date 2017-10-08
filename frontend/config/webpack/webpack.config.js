@@ -68,7 +68,6 @@ module.exports = {
     historyApiFallback: true,
     disableHostCheck: true,
     host: process.env.HOST || '0.0.0.0',
-    port: process.env.PORT || 8081,
+    port: process.env.PORT || 8080,
   },
-
 };
