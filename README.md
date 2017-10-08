@@ -1,13 +1,19 @@
 # MugU
 
 ### Prerequisite
-Docker
+- Docker
 
 ### Build
-```docker-compose build```
+```
+docker-compose build
+```
 
 ### Run
-```docker-compose up```
+```
+docker-compose up
+```
 
 ### Shut down
-```docker-compose down```
+```
+docker-compose down
+```
