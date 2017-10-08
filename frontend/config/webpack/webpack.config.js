@@ -29,7 +29,7 @@ module.exports = {
         loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: ['css-loader', 'less-loader'] }),
       },
       {
-        test: /\.(woff|woff2|ttf|eot|svg|png)(\?v=[a-z0-9]\.[a-z0-9]\.[a-z0-9])?$/,
+        test: /\.(woff|woff2|ttf|eot|svg|png|jpg)(\?v=[a-z0-9]\.[a-z0-9]\.[a-z0-9])?$/,
         loader: 'url-loader?limit=100000',
       },
     ]
@@ -68,7 +68,7 @@ module.exports = {
     historyApiFallback: true,
     disableHostCheck: true,
     host: process.env.HOST || '0.0.0.0',
-    port: process.env.PORT || 8080,
+    port: process.env.PORT || 8081,
   },
 
 };

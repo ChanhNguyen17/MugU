@@ -9,10 +9,13 @@ const defaultState = {
 const authReducer = (state = defaultState, action) => {
   switch (action.type) {
     case actions.LOGIN_SUCCESS: {
-      return { ...state, user: action.payload, error: '' };
+      console.log('reducer')
+      console.log(action.payload)
+      localStorage.setItem('user', JSON.stringify(action.payload));
+      return { ...state };
     }
     case actions.LOGIN_FAILURE: {
-      return { ...state, user: null, error: action.payload };
+      return { ...state, user: null, message: action.payload };
     }
     default: {
       return state;

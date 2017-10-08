@@ -1,8 +1,16 @@
-const resourcesURI = '/meetups';
+const resourcesURI = 'meetups';
 
-const createNewInvite = (description, location, time) => async (dispatch, getState, api) => {
+const createNewInvite = (user, description, location, time) => async (dispatch, getState, api) => {
   try {
-    return api.post(resourcesURI, { description, location, time });
+    return api.post(resourcesURI, { user, description, location, time });
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+const getInviteList = () => async (dispatch, getState, api) => {
+  try {
+    return api.get(resourcesURI);
   } catch (error) {
     throw new Error(error);
   }
@@ -10,4 +18,5 @@ const createNewInvite = (description, location, time) => async (dispatch, getSta
 
 export {
   createNewInvite,
+  getInviteList,
 };

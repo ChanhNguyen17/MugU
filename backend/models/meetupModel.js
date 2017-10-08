@@ -5,7 +5,7 @@ var users = require('./userModel');
 
 var meetupModel = new Schema({
 	user: {
-		type: Schema.Types.ObjectId,
+		type: Object,
 		ref: users.User,
 		require: true
 	},

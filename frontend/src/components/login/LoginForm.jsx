@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Form, Button } from 'semantic-ui-react';
-import { browserHistory } from 'react-router';
+import { connect } from 'react-redux';
+
+import { login } from '../../actions/users';
 
 class LoginForm extends Component {
 
@@ -21,27 +23,11 @@ class LoginForm extends Component {
   }
 
   handleSubmit(event) {
-    fetch('/api/users/authenticate', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        username: this.state.username,
-        password: this.state.password,
-      })
-    }).then(response => response.json())
-      .then((responseJson) => {
-        console.log(responseJson);
-        if (responseJson) {
-          this.props.history.push('/invites');
-          localStorage.setItem('user', JSON.stringify(responseJson));
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
+    console.log("press")
+    this.props.login(
+      this.state.username,
+      this.state.password
+    );
     event.preventDefault();
   }
 
@@ -62,5 +48,9 @@ class LoginForm extends Component {
   }
 }
 
-export default LoginForm;
+const mapDispatchToProps = {
+  login,
+};
 
+
+export default connect(null, mapDispatchToProps)(LoginForm);

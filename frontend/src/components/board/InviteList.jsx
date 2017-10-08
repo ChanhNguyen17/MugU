@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import { Grid, Button, Icon } from 'semantic-ui-react';
+import { connect } from 'react-redux';
+
 import InviteModal from './InviteModal';
 import NewModal from './NewModal';
 import InviteItem from './InviteItem';
+
+import { getInviteList } from '../../actions/meetups';
 
 const fakeInvites = [{
   id: 0,
@@ -40,13 +44,23 @@ const fakeInvites = [{
 class InviteList extends Component {
   constructor(props) {
     super(props);
-    this.state = { currentInvite: {}, modalIsOpen: false, newModalIsOpen: false };
+    this.state = { inviteList: [], currentInvite: {}, modalIsOpen: false, newModalIsOpen: false };
   }
+
+  componentWillMount() {
+    this.props.getInviteList().then((response) => { this.setState({ inviteList: response }); });
+  }
+
   showModal = currentInvite => () => this.setState({ currentInvite, modalIsOpen: true })
   showNewModal = () => this.setState({ newModalIsOpen: true })
   closeModal = modalIsOpen => this.setState({ modalIsOpen })
   closeNewModal = newModalIsOpen => this.setState({ newModalIsOpen })
+
   render() {
+    if (this.state.inviteList.length === 0) {
+      return null;
+    }
+    console.log(this.state.inviteList);
     return (
       <Grid stackable container columns={3} style={{ paddingBottom: '100px' }}>
         <Grid.Row>
@@ -64,14 +78,14 @@ class InviteList extends Component {
         </Grid.Row>
         <Grid.Row>
           <Grid.Column>
-            <InviteItem invite onClick={this.showModal(fakeInvites[0])} curObject={fakeInvites[0]} />
+            <InviteItem invite onClick={this.showModal(this.state.inviteList[0])} curObject={this.state.inviteList[0]} />
           </Grid.Column>
         </Grid.Row>
         <Grid.Row>
           <h1>Invites</h1>
         </Grid.Row>
         {
-          fakeInvites.map(i => (
+          this.state.inviteList.map(i => (
             <Grid.Column key={i.id}>
               <InviteItem invite onClick={this.showModal(i)} curObject={i} />
             </Grid.Column>
@@ -84,4 +98,10 @@ class InviteList extends Component {
   }
 }
 
-export default InviteList;
+const mapDispatchToProps = {
+  getInviteList,
+};
+
+
+export default connect(null, mapDispatchToProps)(InviteList);
+

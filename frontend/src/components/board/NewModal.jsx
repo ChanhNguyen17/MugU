@@ -31,6 +31,7 @@ class NewModal extends Component {
     e.preventDefault();
 
     this.props.createNewInvite(
+      this.props.user,
       this.state.description,
       this.state.place,
       moment(this.state.time, 'HH:mm').toDate()
@@ -43,6 +44,9 @@ class NewModal extends Component {
   }
 
   render() {
+    console.log('local storage')
+    console.log(localStorage.getItem('user'))
+
     return (
       <Modal size="mini" closeIcon open={this.props.open} onClose={this.closeModal}>
         <Modal.Header>
@@ -61,9 +65,11 @@ class NewModal extends Component {
   }
 }
 
+const mapStateToProps = state => ({ user: state.users.user });
+
 const mapDispatchToProps = {
   createNewInvite,
 };
 
 
-export default connect(null, mapDispatchToProps)(NewModal);
+export default connect(mapStateToProps, mapDispatchToProps)(NewModal);

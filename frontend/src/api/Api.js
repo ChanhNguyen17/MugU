@@ -22,7 +22,6 @@ class Api {
   async get(uri) {
     const init = {
       headers: await getHeaders(),
-      credentials: 'include',
     };
     const response = await fetch(`${this.config.baseURL}${uri}`, init);
 

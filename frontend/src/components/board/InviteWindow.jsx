@@ -16,8 +16,6 @@ class InviteWindow extends Component {
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
   render() {
-    const user = localStorage.getItem('user');
-    console.log(user);
     const { activeItem } = this.state;
     return (
       <div style={{ background: '#f4f0e9' }}>
