@@ -36,10 +36,8 @@ var router = () => {
 			if(err){
 				res.status(500).send(err);
 			}else{
-				meetup.time = req.body.time;
-				meetup.location = req.body.location;
-				meetup.description = req.body.description;
-				meetup.photo = req.body.photo;
+				meetup.response.user = req.body.response.user;
+				meetup.response.comment = req.body.response.comment;
 				user.save((err, user)=>{
 					if(err){
 						res.status(500).send(err);

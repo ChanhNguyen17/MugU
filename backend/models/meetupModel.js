@@ -1,9 +1,21 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-var users = require('./userModel');
+const users = require('./userModel');
 
-var meetupModel = new Schema({
+const responseSchema = new Schema({
+	user: {
+		type: Object,
+		ref: users.User,
+		require: true
+	},
+	comment: {
+		type: String,
+		require: true
+	}
+});
+
+const meetupModel = new Schema({
 	user: {
 		type: Object,
 		ref: users.User,
@@ -22,9 +34,10 @@ var meetupModel = new Schema({
 	},
 	photo: {
 		type: String
-	}
+	},
+	response: [responseSchema]
 });
 
-var Meetup = mongoose.model('Meetup', meetupModel);
+const Meetup = mongoose.model('Meetup', meetupModel);
 
 module.exports = Meetup;

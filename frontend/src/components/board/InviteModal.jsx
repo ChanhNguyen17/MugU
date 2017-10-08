@@ -1,15 +1,23 @@
 import React, { Component } from 'react';
 import { Label, Icon, Container, Header, Divider, Button, Modal } from 'semantic-ui-react';
+import { isEmpty } from 'lodash';
+
+import photo from '../../assets/images/arya.jpg';
 
 class InviteModal extends Component {
   closeModal = () => this.props.close(false);
 
   render() {
+    if (isEmpty(this.props.curObject)) {
+      return null;
+    }
+
+    console.log(this.props.curObject);
     return (
       <Modal className="mugu-modal" size="mini" closeIcon open={this.props.open} onClose={this.closeModal}>
         <Modal.Header>
-          <Container className="mugu-image" style={{ background: `transparent url( ${this.props.curObject.photo} ) 0 0/cover no-repeat`, width: '100%' }} />
-          <Container className="mugu-name"><Header>{this.props.curObject.name}</Header></Container>
+          <Container className="mugu-image" style={{ background: `transparent url( ${photo} ) 0 0/cover no-repeat`, width: '100%' }} />
+          <Container className="mugu-name"><Header>{this.props.curObject.user.username}</Header></Container>
         </Modal.Header>
         <Modal.Content>
           {this.props.invite ? (<Modal.Description>
@@ -24,28 +32,28 @@ class InviteModal extends Component {
             </Container>
             <Divider />
             <Container className="time">
-              <p>{this.props.curObject.name} wants to meet in:</p>
+              <p>{this.props.curObject.user.username} wants to meet in:</p>
               <Header>{this.props.curObject.time}</Header>
             </Container>
           </Modal.Description>) : (
-              <Modal.Description>
-                <Container>
-                  <p>{this.props.curObject.description}</p>
-                </Container>
-                <Divider />
-                <Container>
-                  <h3>Reacted to your invite to</h3>
-                  <Label>
-                    <Icon name="marker" />{this.props.curObject.location}
-                  </Label>
-                </Container>
-                <Divider />
-                <Container>
-                  <h3>{this.props.curObject.name} added a comment:</h3>
-                  <p>{this.props.curObject.comment}</p>
-                </Container>
-              </Modal.Description>
-            )
+            <Modal.Description>
+              <Container>
+                <p>{this.props.curObject.description}</p>
+              </Container>
+              <Divider />
+              <Container>
+                <h3>Reacted to your invite to</h3>
+                <Label>
+                  <Icon name="marker" />{this.props.curObject.location}
+                </Label>
+              </Container>
+              <Divider />
+              <Container>
+                <h3>{this.props.curObject.user.username} added a comment:</h3>
+                <p>{this.props.curObject.comment}</p>
+              </Container>
+            </Modal.Description>
+          )
           }
 
         </Modal.Content>
