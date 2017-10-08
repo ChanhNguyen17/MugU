@@ -1,18 +1,32 @@
 import React, { Component } from 'react';
 import { Form, Button } from 'semantic-ui-react';
+import { connect } from 'react-redux';
+
+import { signup } from '../../actions/users';
 
 class SignupForm extends Component {
   constructor(props) {
     super(props);
-    this.state = { username: '', password: '', passwordRepeat: '' };
-    this.handleChangeUsername = this.handleChangeUsername.bind(this);
+    this.state = {
+      email: '',
+      name: '',
+      password: '',
+      passwordRepeat: '',
+    };
+
+    this.handleChangeEmail = this.handleChangeEmail.bind(this);
+    this.handleChangeName = this.handleChangeName.bind(this);
     this.handleChangePassword = this.handleChangePassword.bind(this);
     this.handleChangePasswordRepeat = this.handleChangePasswordRepeat.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChangeUsername(event) {
-    this.setState({ username: event.target.value });
+  handleChangeEmail(event) {
+    this.setState({ email: event.target.value });
+  }
+
+  handleChangeName(event) {
+    this.setState({ name: event.target.value });
   }
 
   handleChangePassword(event) {
@@ -25,26 +39,7 @@ class SignupForm extends Component {
 
   handleSubmit(event) {
     if (this.state.password === this.state.passwordRepeat) {
-      fetch('/api/users', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          username: this.state.username,
-          password: this.state.password,
-        })
-      }).then(response => response.json())
-        .then((responseJson) => {
-          console.log(responseJson);
-          this.props.history.push('/invites');
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    } else {
-      console.log('Password is not match');
+      this.props.signup(this.state.email, this.state.name, this.state.password);
     }
     event.preventDefault();
   }
@@ -53,8 +48,12 @@ class SignupForm extends Component {
     return (
       <Form onSubmit={this.handleSubmit}>
         <Form.Field>
-          <label>Username</label>
-          <input placeholder="Enter your username" value={this.state.username} onChange={this.handleChangeUsername} />
+          <label>E-mail</label>
+          <input placeholder="Enter your e-mail" value={this.state.email} onChange={this.handleChangeEmail} />
+        </Form.Field>
+        <Form.Field>
+          <label>Name</label>
+          <input placeholder="Enter your name" value={this.state.name} onChange={this.handleChangeName} />
         </Form.Field>
         <Form.Field>
           <label>Password</label>
@@ -70,4 +69,8 @@ class SignupForm extends Component {
   }
 }
 
-export default SignupForm;
+const mapDispatchToProps = {
+  signup,
+};
+
+export default connect(null, mapDispatchToProps)(SignupForm);

@@ -1,4 +1,4 @@
-const resourcesURI = 'meetups';
+const resourcesURI = '/meetups';
 
 const createNewInvite = (user, description, location, time) => async (dispatch, getState, api) => {
   try {

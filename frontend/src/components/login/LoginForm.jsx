@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import { login } from '../../actions/users';
 
 class LoginForm extends Component {
-
   constructor(props) {
     super(props);
     this.state = { username: '', password: '' };
@@ -23,7 +22,6 @@ class LoginForm extends Component {
   }
 
   handleSubmit(event) {
-    console.log("press")
     this.props.login(
       this.state.username,
       this.state.password
@@ -51,6 +49,5 @@ class LoginForm extends Component {
 const mapDispatchToProps = {
   login,
 };
-
 
 export default connect(null, mapDispatchToProps)(LoginForm);
