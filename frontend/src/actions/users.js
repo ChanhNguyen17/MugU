@@ -21,9 +21,9 @@ const signup = (email, name, password) => async (dispatch, getState, api) => {
   }
 };
 
-const login = (username, password) => async (dispatch, getState, api) => {
+const login = (email, password) => async (dispatch, getState, api) => {
   try {
-    api.post(`${resourcesURI}/authenticate`, { username, password }).then((data) => {
+    api.post(`${resourcesURI}/authenticate`, { email, password }).then((data) => {
       dispatch({
         type: actions.LOGIN_SUCCESS,
         payload: data,

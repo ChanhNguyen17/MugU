@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Label, Icon, Container, Header, Divider, Button, Modal } from 'semantic-ui-react';
 import { isEmpty } from 'lodash';
 
+import { getHoursDelta, formatDate } from '../../utils/utils';
+
 import photo from '../../assets/images/arya.jpg';
 
 class InviteModal extends Component {
@@ -12,7 +14,9 @@ class InviteModal extends Component {
       return null;
     }
 
-    console.log(this.props.curObject);
+    const hoursDelta = getHoursDelta(this.props.curObject.time);
+    const formattedDate = formatDate(this.props.curObject.time);
+
     return (
       <Modal className="mugu-modal" size="mini" closeIcon open={this.props.open} onClose={this.closeModal}>
         <Modal.Header>
@@ -32,9 +36,10 @@ class InviteModal extends Component {
             </Container>
             <Divider />
             <Container className="time">
-              <p>{this.props.curObject.user.username} wants to meet in:</p>
-              <Header>{this.props.curObject.time}</Header>
+              <p>{this.props.curObject.user.username} Wants to meet in:</p>
+              <Header>{`${hoursDelta} hours`}</Header>
             </Container>
+            <Header size="medium" style={{ color: '#5b554d', textAlign: 'center' }}>{formattedDate}</Header>
           </Modal.Description>) : (
             <Modal.Description>
               <Container>
@@ -61,11 +66,11 @@ class InviteModal extends Component {
           {this.props.invite ? (
             <Button className="mugu-btn" circular content="Interested" />
           ) : (
-              <div>
-                <Button className="mugu-btn" circular content="Accept" />
-                <Button className="mugu-btn negative" circular content="Decline" />
-              </div>
-            )
+            <div>
+              <Button className="mugu-btn" circular content="Accept" />
+              <Button className="mugu-btn negative" circular content="Decline" />
+            </div>
+          )
           }
         </Modal.Actions>
       </Modal>

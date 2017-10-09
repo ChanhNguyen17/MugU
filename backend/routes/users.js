@@ -35,7 +35,6 @@ var router = () => {
 		});
 	});
 	userRouter.post('/', (req, res, next) => {
-		console.log(req.body)
 		var newUser = userCollection(req.body);
 		newUser.save((err, user) => {
 			if (err) {
