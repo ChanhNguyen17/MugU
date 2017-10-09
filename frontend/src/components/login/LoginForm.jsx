@@ -7,14 +7,16 @@ import { login } from '../../actions/users';
 class LoginForm extends Component {
   constructor(props) {
     super(props);
-    this.state = { username: '', password: '' };
-    this.handleChangeUsername = this.handleChangeUsername.bind(this);
+
+    this.state = { email: '', password: '' };
+
+    this.handleChangeEmail = this.handleChangeEmail.bind(this);
     this.handleChangePassword = this.handleChangePassword.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChangeUsername(event) {
-    this.setState({ username: event.target.value });
+  handleChangeEmail(event) {
+    this.setState({ email: event.target.value });
   }
 
   handleChangePassword(event) {
@@ -23,7 +25,7 @@ class LoginForm extends Component {
 
   handleSubmit(event) {
     this.props.login(
-      this.state.username,
+      this.state.email,
       this.state.password
     );
     event.preventDefault();
@@ -33,12 +35,12 @@ class LoginForm extends Component {
     return (
       <Form onSubmit={this.handleSubmit}>
         <Form.Field>
-          <label>Login</label>
-          <input placeholder="Enter your username" value={this.state.username} onChange={this.handleChangeUsername}/>
+          <label>Email</label>
+          <input placeholder="Enter your email" type="email" value={this.state.email} onChange={this.handleChangeEmail} />
         </Form.Field>
         <Form.Field>
           <label>Password</label>
-          <input placeholder="Enter your password" type="password" value={this.state.password} onChange={this.handleChangePassword}/>
+          <input placeholder="Enter your password" type="password" value={this.state.password} onChange={this.handleChangePassword} />
         </Form.Field>
         <Button type="submit">Log in</Button>
       </Form>

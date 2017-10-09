@@ -10,7 +10,7 @@ docker-compose build
 
 ### Run
 ```
-docker-compose up
+GOOGLE_MAPS_API_KEY=YOUR_API_KEY docker-compose up
 ```
 
 ### Shut down

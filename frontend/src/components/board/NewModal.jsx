@@ -35,18 +35,12 @@ class NewModal extends Component {
       this.state.description,
       this.state.place,
       moment(this.state.time, 'HH:mm').toDate()
-    ).then((responseJson) => {
-      console.log(responseJson);
+    ).then(() => {
       this.closeModal();
-    }).catch((error) => {
-      console.error(error);
     });
   }
 
   render() {
-    console.log('local storage')
-    console.log(localStorage.getItem('user'))
-
     return (
       <Modal size="mini" closeIcon open={this.props.open} onClose={this.closeModal}>
         <Modal.Header>

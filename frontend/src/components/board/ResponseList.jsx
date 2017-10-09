@@ -29,7 +29,6 @@ class ResponseList extends Component {
         {this.state.inviteList.filter(i => (i.user.username === this.props.user.username)).map(i => (
 
           <Grid stackable container columns={3}>
-            {console.log(i)}
             <Grid.Row>
               <h1>Your invite</h1>
             </Grid.Row>

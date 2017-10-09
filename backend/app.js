@@ -13,8 +13,8 @@ mongoose.connect(dbURL);
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', ()=>{
-  console.log('we are connected!');
+db.once('open', () => {
+  console.log('Connected to the database.');
 });
 
 var app = express();

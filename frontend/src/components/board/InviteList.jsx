@@ -46,7 +46,7 @@ class InviteList extends Component {
         </Grid>
       );
     }
-    console.log(this.state.inviteList);
+
     return (
       <Grid stackable container columns={3} style={{ paddingBottom: '100px' }}>
         <Grid.Row>

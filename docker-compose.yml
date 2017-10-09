@@ -22,6 +22,7 @@ services:
     build: frontend
     environment:
       - ENDPOINT=${ENDPOINT:-http://localhost:8090/api}
+      - GOOGLE_MAPS_API_KEY=${GOOGLE_MAPS_API_KEY}
     volumes:
       - ./frontend/src:/usr/src/app/src
     ports:
