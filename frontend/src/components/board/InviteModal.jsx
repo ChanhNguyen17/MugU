@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Label, Icon, Container, Header, Divider, Button, Modal } from 'semantic-ui-react';
 import { isEmpty } from 'lodash';
 
-import { getHoursDelta, formatDate } from '../../utils/utils';
+import { getTimeDeltaString } from '../../utils/utils';
 
 import photo from '../../assets/images/arya.jpg';
 
@@ -14,8 +14,7 @@ class InviteModal extends Component {
       return null;
     }
 
-    const hoursDelta = getHoursDelta(this.props.curObject.time);
-    const formattedDate = formatDate(this.props.curObject.time);
+    const hoursDelta = getTimeDeltaString(this.props.curObject.time);
 
     return (
       <Modal className="mugu-modal" size="mini" closeIcon open={this.props.open} onClose={this.closeModal}>
@@ -37,9 +36,8 @@ class InviteModal extends Component {
             <Divider />
             <Container className="time">
               <p>{this.props.curObject.user.username} Wants to meet in:</p>
-              <Header>{`${hoursDelta} hours`}</Header>
+              <Header>{`${hoursDelta}`}</Header>
             </Container>
-            <Header size="medium" style={{ color: '#5b554d', textAlign: 'center' }}>{formattedDate}</Header>
           </Modal.Description>) : (
             <Modal.Description>
               <Container>
