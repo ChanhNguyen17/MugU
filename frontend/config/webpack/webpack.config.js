@@ -5,7 +5,7 @@ const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const GLOBALS = {
-  'process.env.ENDPOINT': JSON.stringify(process.env.ENDPOINT || 'http://localhost:8090/api/'),
+  'process.env.ENDPOINT': JSON.stringify(process.env.ENDPOINT || 'http://localhost:8090/api'),
 };
 
 module.exports = {
