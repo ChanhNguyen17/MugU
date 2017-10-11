@@ -6,9 +6,9 @@ import moment from 'moment';
 import { createNewInvite } from '../../actions/meetups';
 
 const options = [
-  { text: 'Espresso House', value: 'espresso' },
-  { text: 'Kahvi Charlotta', value: 'charlotta' },
-  { text: 'Robert\'s coffee', value: 'roberts' },
+  { text: 'Espresso House', value: 'Espresso House' },
+  { text: 'Kahvi Charlotta', value: 'Charlotta' },
+  { text: 'Robert\'s coffee', value: 'Roberts Coffee' },
 ];
 
 class NewModal extends Component {

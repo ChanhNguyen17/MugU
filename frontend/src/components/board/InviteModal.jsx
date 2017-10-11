@@ -20,7 +20,7 @@ class InviteModal extends Component {
       <Modal className="mugu-modal" size="mini" closeIcon open={this.props.open} onClose={this.closeModal}>
         <Modal.Header>
           <Container className="mugu-image" style={{ background: `transparent url( ${photo} ) 0 0/cover no-repeat`, width: '100%' }} />
-          <Container className="mugu-name"><Header>{this.props.curObject.user.username}</Header></Container>
+          <Container className="mugu-name"><Header>{this.props.curObject.user.name}</Header></Container>
         </Modal.Header>
         <Modal.Content>
           {this.props.invite ? (<Modal.Description>
@@ -35,7 +35,7 @@ class InviteModal extends Component {
             </Container>
             <Divider />
             <Container className="time">
-              <p>{this.props.curObject.user.username} Wants to meet in:</p>
+              <p>{this.props.curObject.user.name} Wants to meet in:</p>
               <Header>{`${hoursDelta}`}</Header>
             </Container>
           </Modal.Description>) : (

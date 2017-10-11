@@ -26,7 +26,7 @@ class ResponseList extends Component {
     }
     return (
       <Grid stackable container columns={3} style={{ paddingBottom: '100px' }}>
-        {this.state.inviteList.filter(i => (i.user.username === this.props.user.username)).map(i => (
+        {this.state.inviteList.filter(i => (i.user.email === this.props.user.email)).map(i => (
 
           <Grid stackable container columns={3}>
             <Grid.Row>
